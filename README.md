@@ -7,4 +7,4 @@
   - [ ] Create subreddit page
 - [ ] Get all popular posts from r/all
 - [ ] Get populer posts from subreddits
-- [ ]
+- [ ] ...
