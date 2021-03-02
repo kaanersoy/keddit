@@ -9,6 +9,24 @@
 - Reddit API
 - Materialize CSS
 
+## Install
+
+```bash
+
+#clone the project
+git clone https://github.com/kaanersoy/reddit-clone.git
+
+#go to project path
+cd project path
+
+#install the dependencies
+npm i
+
+#start it!
+npm run serve
+
+```
+
 ## Authors
 
 - Kaan Ersoy / [github](https://github.com/kaanersoy)
