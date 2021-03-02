@@ -1,6 +1,6 @@
 <template>
   <section class="subreddit">
-    <h1>Subreddit</h1>
+    <h1>{{ this.$route.params.subreddit }}</h1>
   </section>
 </template>
 
