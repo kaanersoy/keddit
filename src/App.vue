@@ -28,10 +28,13 @@
 </template>
 
 <style lang="scss">
+$bgcolor: #dae0e6;
+
 body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $bgcolor;
 }
 nav {
   padding: 0 30px;
