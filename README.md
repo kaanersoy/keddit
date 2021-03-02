@@ -17,7 +17,7 @@
 git clone https://github.com/kaanersoy/reddit-clone.git
 
 #go to project path
-cd project path
+cd /project-path
 
 #install the dependencies
 npm i
