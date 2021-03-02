@@ -13,16 +13,16 @@
 
 ```bash
 
-#clone the project
+# clone the project
 git clone https://github.com/kaanersoy/reddit-clone.git
 
-#go to project path
+# go to project path
 cd /project-path
 
-#install the dependencies
+# install the dependencies
 npm install
 
-#start it!
+# start it!
 npm run serve
 
 ```
