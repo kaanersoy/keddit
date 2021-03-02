@@ -20,7 +20,7 @@ git clone https://github.com/kaanersoy/reddit-clone.git
 cd /project-path
 
 #install the dependencies
-npm i
+npm install
 
 #start it!
 npm run serve
