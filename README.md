@@ -1,4 +1,17 @@
-# reddit-clone made with Vue 2
+# Reddit clone made with Vue 2
+
+> just a reddit clone 🐶
+
+### Used Techs:
+
+- Vue 2
+- Vue Router
+- Reddit API
+- Materialize CSS
+
+## Authors
+
+- Kaan Ersoy / [github](https://github.com/kaanersoy)
 
 ## TODO List
 
