@@ -125,9 +125,5 @@ $bgcolor: #f0f0f0;
       }
     }
   }
-  .preloader {
-    display: flex;
-    justify-content: center;
-  }
 }
 </style>

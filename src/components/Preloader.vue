@@ -23,4 +23,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.preloader {
+  display: flex;
+  justify-content: center;
+}
+</style>

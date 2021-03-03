@@ -2,9 +2,9 @@
   <div id="main">
     <nav class="teal">
       <div class="nav-wrapper">
-        <a href="#!" class="brand-logo center">reddit</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"
-          ><i class="material-icons">menu</i></a
+        <router-link to="/" class="brand-logo center">reddit</router-link>
+        <router-link to="yey" data-target="mobile-demo" class="sidenav-trigger"
+          ><i class="material-icons">menu</i></router-link
         >
         <ul class="right hide-on-med-and-down">
           <!-- <li><router-link to="sass.html">Sass</router-link></li>

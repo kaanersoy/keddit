@@ -6,9 +6,9 @@
         <div class="post-card__head">
           <span class="from"
             >Posted by
-            <a :href="`https://www.reddit.com/${post.data.subreddit_name_prefixed}`">{{
+            <router-link :to="`/${post.data.subreddit_name_prefixed}`">{{
               post.data.subreddit_name_prefixed
-            }}</a></span
+            }}</router-link></span
           >
           <span>&#8226;</span>
           <span class="ago">{{ getTime(post.data.created_utc) }}</span>
