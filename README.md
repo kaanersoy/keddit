@@ -6,6 +6,7 @@
 
 - Vue 2
 - Vue Router
+- Vuex
 - Reddit API
 - Materialize CSS
 
