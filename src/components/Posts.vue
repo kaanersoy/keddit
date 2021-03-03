@@ -6,9 +6,10 @@
         <div class="post-card__head">
           <span class="from"
             >Posted by
-            <router-link :to="`/${post.data.subreddit_name_prefixed}`">{{
-              post.data.subreddit_name_prefixed
-            }}</router-link></span
+            <router-link
+              :to="`/${getSubredditNames(post.data.subreddit_name_prefixed)}`"
+              >{{ post.data.subreddit_name_prefixed }}</router-link
+            ></span
           >
           <span>&#8226;</span>
           <span class="ago">{{ getTime(post.data.created_utc) }}</span>
@@ -82,6 +83,16 @@ export default {
       }
       const diffDays = parseInt(diffTime / (1000 * 60 * 60));
       return `${diffDays} hours ago`;
+    },
+    getSubredditNames: function(name) {
+      if (
+        this.$store.state.subreddits.includes(name) ||
+        this.$store.state.subreddits.length > 5
+      ) {
+        return name;
+      }
+      this.$store.commit('addsubreddit', { value: name });
+      return name;
     },
   },
 };
