@@ -28,10 +28,6 @@ npm run serve
 
 ```
 
-## Authors
-
-- Kaan Ersoy / [github](https://github.com/kaanersoy)
-
 ## TODO List
 
 - [x] Create a Vue 2 App and add Router
@@ -40,3 +36,7 @@ npm run serve
 - [x] Get all popular posts from r/all
 - [x] Get populer posts from subreddits
 - [ ] ...
+
+## Authors
+
+- Kaan Ersoy / [github](https://github.com/kaanersoy)
