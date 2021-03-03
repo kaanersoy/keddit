@@ -35,10 +35,10 @@
             </div>
             <div
               class="post-card__body"
-              v-bind:class="post.data.post_hint == 'image' ? null : 'img'"
+              v-bind:class="post.data.post_hint == 'image' ? 'img' : null"
             >
               <h5>{{ post.data.title }}</h5>
-              <div v-if="post.data.thumbnail != 'default'" class="post-card__body__img">
+              <div v-if="post.data.post_hint == 'image'" class="post-card__body__img">
                 <img :src="post.data.url" alt="" />
               </div>
               <a
@@ -152,16 +152,9 @@ $bgcolor: #f0f0f0;
           }
         }
         &__body {
-          &.img {
-            &__img {
+          &__img {
+            img {
               width: 100%;
-              img {
-                width: 100%;
-              }
-            }
-            p {
-              margin-left: 20px;
-              flex-grow: 1;
             }
           }
         }
