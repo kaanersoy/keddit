@@ -40,3 +40,8 @@ npm run serve
 ## Authors
 
 - Kaan Ersoy / [github](https://github.com/kaanersoy)
+
+## Credits
+
+- Close icon -> [https://www.iconfinder.com/](https://www.iconfinder.com/search/?q=close)
+- Loading svg -> [https://loading.io/](https://loading.io/)
