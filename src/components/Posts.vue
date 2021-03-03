@@ -170,6 +170,7 @@ $imgborder: 2px solid
           display: flex;
           justify-content: center;
           video {
+            max-width: 100%;
             border: $imgborder;
           }
         }

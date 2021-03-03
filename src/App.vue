@@ -1,20 +1,17 @@
 <template>
   <div id="main">
-    <nav class="teal">
-      <div class="nav-wrapper">
-        <router-link to="/" class="brand-logo center">reddit</router-link>
-        <router-link to="yey" data-target="mobile-demo" class="sidenav-trigger"
-          ><i class="material-icons">menu</i></router-link
-        >
-        <ul class="right hide-on-med-and-down">
-          <!-- <li><router-link to="sass.html">Sass</router-link></li>
-          <li><router-link to="badges.html">Components</router-link></li>
-          <li><router-link to="collapsible.html">Javascript</router-link></li>
-          <li><router-link to="mobile.html">Mobile</router-link></li> -->
-        </ul>
+    <nav>
+      <div class="container">
+        <div class="nav-wrapper">
+          <router-link to="/" class="brand-logo">reddit</router-link>
+          <div class="searchbar">
+            <input id="search" type="search" required />
+            <label class="label-icon" for="search">Search something</label>
+          </div>
+          <!-- //SEARCH https://www.reddit.com/subreddits/search.json?q= -->
+        </div>
       </div>
     </nav>
-
     <!-- mobile -->
     <!-- <ul class="sidenav" id="mobile-demo">
       <li><a to="sass.html">Sass</a></li>
@@ -29,7 +26,12 @@
 
 <style lang="scss">
 $bgcolor: #dae0e6;
+$maincolor: #009688;
 
+.container {
+  max-width: 70%;
+  margin: 0 auto;
+}
 body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -37,7 +39,29 @@ body {
   background-color: $bgcolor;
 }
 nav {
-  padding: 0 30px;
+  background-color: $maincolor;
+  line-height: inherit;
+  height: unset;
+  .brand-logo {
+    font-size: 30px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    .searchbar {
+      input {
+        height: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        border-bottom: 2px solid #fff !important;
+      }
+    }
+  }
 }
 </style>
 

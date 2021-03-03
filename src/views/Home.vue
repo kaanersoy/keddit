@@ -79,9 +79,10 @@ $bgcolor: #f0f0f0;
         overflow: hidden;
         h5 {
           position: absolute;
-          left: 10px;
+          left: 15px;
           z-index: 2;
-          bottom: 10px;
+          margin: 0;
+          bottom: 15px;
           color: #fff;
           font-size: 22px;
         }
