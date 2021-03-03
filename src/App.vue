@@ -5,8 +5,20 @@
         <div class="nav-wrapper">
           <router-link to="/" class="brand-logo">reddit</router-link>
           <div class="searchbar">
-            <input id="search" type="search" required />
+            <input id="search" type="search" v-model="searchKeyword" required />
             <label class="label-icon" for="search">Search something</label>
+            <span v-if="searchKeyword" class="close"
+              ><svg
+                height="20"
+                viewBox="0 0 48 48"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill="#fff"
+                  d="M38 12.83l-2.83-2.83-11.17 11.17-11.17-11.17-2.83 2.83 11.17 11.17-11.17 11.17 2.83 2.83 11.17-11.17 11.17 11.17 2.83-2.83-11.17-11.17z"
+                /></svg
+            ></span>
           </div>
           <!-- //SEARCH https://www.reddit.com/subreddits/search.json?q= -->
         </div>
@@ -54,11 +66,40 @@ nav {
     align-items: center;
     height: 100px;
     .searchbar {
+      position: relative;
+      label {
+        position: absolute;
+        left: 0;
+        top: 12px;
+        color: rgba($color: #fff, $alpha: 0.8);
+        transition: 200ms ease-out;
+      }
+      span {
+        display: inline-block;
+        line-height: 1;
+        position: absolute;
+        right: -20px;
+        bottom: 8px;
+        cursor: pointer;
+      }
       input {
-        height: 50px;
+        height: 40px;
         font-size: 18px;
         font-weight: bold;
-        border-bottom: 2px solid #fff !important;
+        background-color: rgba($color: #fff, $alpha: 0);
+        box-shadow: none;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid rgba($color: #fff, $alpha: 0.3);
+        color: #fff;
+        transition: 300ms ease-out;
+        &:focus,
+        &:valid {
+          & ~ label {
+            color: rgba($color: #fff, $alpha: 0.5);
+            transform: translate(-10px, -30px) scale(0.8);
+          }
+        }
       }
     }
   }
@@ -69,5 +110,14 @@ nav {
 import 'normalize.css';
 export default {
   name: 'App',
+  data: () => ({
+    isSearching: false,
+    searchKeyword: null,
+  }),
+  methods: {
+    makeSearch: function() {
+      console.log();
+    },
+  },
 };
 </script>

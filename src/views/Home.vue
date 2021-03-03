@@ -18,7 +18,8 @@
             </div>
             <h5>Recommended for u 👇</h5>
           </div>
-          <div class="recommended__body">
+          <preloader :loaded="this.$store.state.subreddits.length != 0"></preloader>
+          <div class="recommended__body" v-if="this.$store.state.subreddits.length > 0">
             <div
               v-for="subreddit in this.$store.state.subreddits"
               class="recommended__body__row"
@@ -43,11 +44,14 @@
 
 <script>
 import Posts from '../components/Posts';
+import Preloader from '../components/Preloader';
+
 export default {
   name: 'Home',
   data: () => ({}),
   components: {
     Posts,
+    Preloader,
   },
   methods: {},
 };
