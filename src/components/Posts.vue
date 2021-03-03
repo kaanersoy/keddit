@@ -38,12 +38,15 @@
               Sorry, your browser doesn't support embedded videos.
             </video>
           </div>
-          <a
-            :href="post.data.url_overridden_by_dest"
-            v-if="!post.data.is_reddit_media_domain"
-          >
-            {{ post.data.url_overridden_by_dest }}
-          </a>
+          <div v-if="post.data.post_hint == 'link'" class="post-card__body__link">
+            <a target="_blank" :href="post.data.url_overridden_by_dest">
+              {{ post.data.url_overridden_by_dest.substring(0, 30) + '...' }}
+            </a>
+            <div class="post-card__body__link__thumbnail">
+              <img src="../assets/external-link-symbol.png" alt="" class="ext" />
+              <img :src="post.data.thumbnail" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -100,15 +103,22 @@ export default {
 
 <style lang="scss">
 $bgcolor: #f0f0f0;
+$maincolor: #009688;
+$imgborder: 2px solid
+  rgba(
+    $color: #009688,
+    $alpha: 0.5,
+  );
 .card-container {
   width: 100%;
   &__head {
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     h2 {
     }
   }
   &__wrapper {
     .post-card {
+      border: $imgborder;
       background-color: $bgcolor;
       padding: 15px;
       border-radius: 8px;
@@ -116,6 +126,17 @@ $bgcolor: #f0f0f0;
         margin-top: 50px;
       }
       &__head {
+        position: relative;
+        margin-bottom: 30px;
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -15px;
+          left: 0;
+          width: 50%;
+          height: 2px;
+          background-color: rgba($color: $maincolor, $alpha: 0.3);
+        }
         span {
           display: inline-block;
           & + span {
@@ -133,8 +154,14 @@ $bgcolor: #f0f0f0;
         }
       }
       &__body {
+        h5 {
+          font-size: 22px;
+          font-weight: bold;
+          margin-bottom: 20px;
+        }
         &__img {
           img {
+            border: $imgborder;
             width: 100%;
           }
         }
@@ -143,6 +170,48 @@ $bgcolor: #f0f0f0;
           display: flex;
           justify-content: center;
           video {
+            border: $imgborder;
+          }
+        }
+        &__link {
+          display: flex;
+          justify-content: space-between;
+          a {
+            align-self: flex-start;
+          }
+          &__thumbnail {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-color: rgba($color: #000000, $alpha: 0.3);
+            width: 150px;
+            height: 150px;
+            z-index: 2;
+            overflow: hidden;
+            &:hover {
+              img {
+                border: $imgborder;
+                filter: opacity(0.3);
+              }
+            }
+            img {
+              filter: opacity(0.6);
+              transition: 300ms filter;
+              position: absolute;
+              z-index: -1;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            }
+            & img.ext {
+              filter: none;
+              position: static;
+              z-index: 1;
+              width: 30px;
+              height: 30px;
+            }
           }
         }
       }
