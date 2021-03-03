@@ -2,7 +2,7 @@
   <div id="main">
     <nav class="teal">
       <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">reddit</a>
+        <a href="#!" class="brand-logo center">reddit</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"
           ><i class="material-icons">menu</i></a
         >

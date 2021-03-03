@@ -41,6 +41,22 @@
               <div v-if="post.data.post_hint == 'image'" class="post-card__body__img">
                 <img :src="post.data.url" alt="" />
               </div>
+              <div
+                v-if="post.data.post_hint == 'hosted:video'"
+                class="post-card__body__video"
+              >
+                <video controls :width="post.data.secure_media.reddit_video.width">
+                  <source
+                    :src="post.data.secure_media.reddit_video.fallback_url"
+                    type="video/webm"
+                  />
+                  <source
+                    :src="post.data.secure_media.reddit_video.fallback_url"
+                    type="video/mp4"
+                  />
+                  Sorry, your browser doesn't support embedded videos.
+                </video>
+              </div>
               <a
                 :href="post.data.url_overridden_by_dest"
                 v-if="!post.data.is_reddit_media_domain"
