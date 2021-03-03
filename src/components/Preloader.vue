@@ -1,18 +1,6 @@
 <template>
   <div v-if="!loaded" class="preloader">
-    <div class="preloader-wrapper big active">
-      <div class="spinner-layer spinner-blue-only">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div>
-        <div class="gap-patch">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-    </div>
+    <img src="../assets/loading-icon.svg" alt="loading icon" />
   </div>
 </template>
 
@@ -23,9 +11,13 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .preloader {
   display: flex;
   justify-content: center;
+  img {
+    width: 60px;
+    height: 60px;
+  }
 }
 </style>
