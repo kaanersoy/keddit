@@ -4,68 +4,8 @@
       <h2>Trending Today</h2>
     </div>
     <div class="home">
-      <div class="home__card-container">
-        <div v-if="!loaded" class="preloader">
-          <div class="preloader-wrapper big active">
-            <div class="spinner-layer spinner-blue-only">
-              <div class="circle-clipper left">
-                <div class="circle"></div>
-              </div>
-              <div class="gap-patch">
-                <div class="circle"></div>
-              </div>
-              <div class="circle-clipper right">
-                <div class="circle"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div v-if="loaded" class="home__card-container__wrapper">
-          <div v-for="post in posts" :key="posts.indexOf(post)" class="post-card">
-            <div class="post-card__head">
-              <span class="from"
-                >Posted by
-                <a
-                  :href="`https://www.reddit.com/${post.data.subreddit_name_prefixed}`"
-                  >{{ post.data.subreddit_name_prefixed }}</a
-                ></span
-              >
-              <span>&#8226;</span>
-              <span class="ago">{{ getTime(post.data.created_utc) }}</span>
-            </div>
-            <div
-              class="post-card__body"
-              v-bind:class="post.data.post_hint == 'image' ? 'img' : null"
-            >
-              <h5>{{ post.data.title }}</h5>
-              <div v-if="post.data.post_hint == 'image'" class="post-card__body__img">
-                <img :src="post.data.url" alt="" />
-              </div>
-              <div
-                v-if="post.data.post_hint == 'hosted:video'"
-                class="post-card__body__video"
-              >
-                <video controls :width="post.data.secure_media.reddit_video.width">
-                  <source
-                    :src="post.data.secure_media.reddit_video.fallback_url"
-                    type="video/webm"
-                  />
-                  <source
-                    :src="post.data.secure_media.reddit_video.fallback_url"
-                    type="video/mp4"
-                  />
-                  Sorry, your browser doesn't support embedded videos.
-                </video>
-              </div>
-              <a
-                :href="post.data.url_overridden_by_dest"
-                v-if="!post.data.is_reddit_media_domain"
-              >
-                {{ post.data.url_overridden_by_dest }}
-              </a>
-            </div>
-          </div>
-        </div>
+      <div class="home__posts">
+        <posts reddit="all"></posts>
       </div>
       <div class="home__sidebar">
         <div class="recommended">
@@ -94,15 +34,18 @@
 </template>
 
 <script>
+import Posts from '../components/Posts';
 export default {
   name: 'Home',
   data: () => ({
     posts: [],
     loaded: false,
-    lightboxItem: null,
   }),
   mounted: function() {
     this.getPosts('all');
+  },
+  components: {
+    Posts,
   },
   methods: {
     getPosts: async function(name) {
@@ -135,47 +78,8 @@ $bgcolor: #f0f0f0;
   padding: 10px;
   display: flex;
   justify-content: space-between;
-  &__card-container {
+  &__posts {
     width: calc(100% - 30% - 40px);
-    &__head {
-      margin-bottom: 50px;
-      h2 {
-      }
-    }
-    &__wrapper {
-      .post-card {
-        background-color: $bgcolor;
-        padding: 15px;
-        border-radius: 8px;
-        & + .post-card {
-          margin-top: 50px;
-        }
-        &__head {
-          span {
-            display: inline-block;
-            & + span {
-              margin-left: 10px;
-            }
-            &.from {
-              a {
-                font-weight: bold;
-                font-size: inherit;
-              }
-            }
-            &.ago {
-              position: relative;
-            }
-          }
-        }
-        &__body {
-          &__img {
-            img {
-              width: 100%;
-            }
-          }
-        }
-      }
-    }
   }
   &__sidebar {
     align-self: flex-start;

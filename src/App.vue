@@ -7,10 +7,10 @@
           ><i class="material-icons">menu</i></a
         >
         <ul class="right hide-on-med-and-down">
-          <li><router-link to="sass.html">Sass</router-link></li>
+          <!-- <li><router-link to="sass.html">Sass</router-link></li>
           <li><router-link to="badges.html">Components</router-link></li>
           <li><router-link to="collapsible.html">Javascript</router-link></li>
-          <li><router-link to="mobile.html">Mobile</router-link></li>
+          <li><router-link to="mobile.html">Mobile</router-link></li> -->
         </ul>
       </div>
     </nav>
