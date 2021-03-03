@@ -5,9 +5,19 @@
         <div class="nav-wrapper">
           <router-link to="/" class="brand-logo">reddit</router-link>
           <div class="searchbar">
-            <input id="search" type="search" v-model="searchKeyword" required />
-            <label class="label-icon" for="search">Search something</label>
-            <span v-if="searchKeyword" class="close"
+            <input
+              id="search"
+              type="search"
+              v-model="searchKeyword"
+              @keyup="makeSearch"
+              @keydown.esc="(searchKeyword = ''), (isSearching = false)"
+              required
+            />
+            <label class="label-icon" for="search">Search subreddits</label>
+            <span
+              class="close"
+              v-if="searchKeyword"
+              @click="(searchKeyword = ''), (isSearching = false)"
               ><svg
                 height="20"
                 viewBox="0 0 48 48"
@@ -19,22 +29,75 @@
                   d="M38 12.83l-2.83-2.83-11.17 11.17-11.17-11.17-2.83 2.83 11.17 11.17-11.17 11.17 2.83 2.83 11.17-11.17 11.17 11.17 2.83-2.83-11.17-11.17z"
                 /></svg
             ></span>
+            <div class="searchbar__results">
+              <preloader :loaded="!isSearchLoading"></preloader>
+              <ul v-if="searchResults && isSearching && !isSearchLoading">
+                <li
+                  v-for="(subreddit, i) in searchResults"
+                  :key="i"
+                  @click="
+                    {
+                      searchKeyword = '';
+                      isSearching = false;
+                    }
+                  "
+                >
+                  <router-link
+                    :to="{
+                      name: 'subreddit',
+                      params: { subreddit: subreddit.data.display_name },
+                    }"
+                  >
+                    {{ subreddit.data.display_name_prefixed }}
+                  </router-link>
+                </li>
+              </ul>
+            </div>
           </div>
-          <!-- //SEARCH https://www.reddit.com/subreddits/search.json?q= -->
         </div>
       </div>
     </nav>
-    <!-- mobile -->
-    <!-- <ul class="sidenav" id="mobile-demo">
-      <li><a to="sass.html">Sass</a></li>
-      <li><a to="badges.html">Components</a></li>
-      <li><a to="collapsible.html">Javascript</a></li>
-      <li><a to="mobile.html">Mobile</a></li>
-    </ul> -->
 
     <router-view />
   </div>
 </template>
+
+<script>
+import Preloader from './components/Preloader';
+import 'normalize.css';
+export default {
+  name: 'App',
+  data: () => ({
+    isSearching: false,
+    searchKeyword: null,
+    searchResults: [],
+    isSearchLoading: false,
+  }),
+  components: {
+    Preloader,
+  },
+  methods: {
+    makeSearch: function() {
+      clearTimeout(searchTimeout);
+      const searchTimeout = setTimeout(() => {
+        if (this.searchKeyword.length > 1) {
+          fetch(`https://www.reddit.com/subreddits/search.json?q=${this.searchKeyword}`)
+            .then(res => res.json())
+            .then(res => (this.searchResults = res.data.children))
+            .then(() => {
+              if (this.searchResults.length > 0) {
+                return (this.isSearching = true);
+              }
+              this.isSearching = false;
+            });
+        } else {
+          this.isSearching = false;
+        }
+      }, 1000);
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 $bgcolor: #dae0e6;
@@ -73,6 +136,7 @@ nav {
         top: 12px;
         color: rgba($color: #fff, $alpha: 0.8);
         transition: 200ms ease-out;
+        pointer-events: none;
       }
       span {
         display: inline-block;
@@ -101,23 +165,26 @@ nav {
           }
         }
       }
+      &__results {
+        position: absolute;
+        top: 50px;
+        right: 0;
+        width: 400px;
+        z-index: 3;
+        background-color: #fff;
+        ul {
+          list-style-type: none;
+          padding: 20px 0;
+          padding-left: 10px;
+          margin: 0;
+          li {
+            & + li {
+              margin-top: 20px;
+            }
+          }
+        }
+      }
     }
   }
 }
 </style>
-
-<script>
-import 'normalize.css';
-export default {
-  name: 'App',
-  data: () => ({
-    isSearching: false,
-    searchKeyword: null,
-  }),
-  methods: {
-    makeSearch: function() {
-      console.log();
-    },
-  },
-};
-</script>

@@ -20,6 +20,12 @@ export default {
   mounted() {
     this.subredditName = this.$route.params.subreddit;
   },
+  watch: {
+    '$route.params.subreddit': function() {
+      console.log('changed!');
+      this.subredditName = this.$route.params.subreddit;
+    },
+  },
 };
 </script>
 

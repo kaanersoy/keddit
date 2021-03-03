@@ -67,6 +67,11 @@ export default {
   components: {
     Preloader,
   },
+  watch: {
+    reddit: function() {
+      this.getPosts(this.reddit);
+    },
+  },
   props: ['reddit'],
   methods: {
     getPosts: async function(name) {
