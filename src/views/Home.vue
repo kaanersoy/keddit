@@ -37,36 +37,11 @@
 import Posts from '../components/Posts';
 export default {
   name: 'Home',
-  data: () => ({
-    posts: [],
-    loaded: false,
-  }),
-  mounted: function() {
-    this.getPosts('all');
-  },
+  data: () => ({}),
   components: {
     Posts,
   },
-  methods: {
-    getPosts: async function(name) {
-      this.loaded = false;
-      fetch(`https://www.reddit.com/r/${name}.json`)
-        .then(res => res.json())
-        .then(res => (this.posts = res.data.children))
-        .then(() => (this.loaded = true));
-    },
-    getTime: function(time) {
-      const postDate = new Date(time * 1000);
-      const dateNow = new Date(Date.now());
-      const diffTime = Math.abs(dateNow - postDate);
-      const diffMinutes = parseInt(diffTime / (1000 * 60));
-      if (diffMinutes < 60) {
-        return `${diffMinutes} mins ago`;
-      }
-      const diffDays = parseInt(diffTime / (1000 * 60 * 60));
-      return `${diffDays} hours ago`;
-    },
-  },
+  methods: {},
 };
 </script>
 

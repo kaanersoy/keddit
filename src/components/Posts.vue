@@ -1,20 +1,6 @@
 <template>
   <div class="card-container">
-    <div v-if="!loaded" class="preloader">
-      <div class="preloader-wrapper big active">
-        <div class="spinner-layer spinner-blue-only">
-          <div class="circle-clipper left">
-            <div class="circle"></div>
-          </div>
-          <div class="gap-patch">
-            <div class="circle"></div>
-          </div>
-          <div class="circle-clipper right">
-            <div class="circle"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <preloader :loaded="loaded"></preloader>
     <div v-if="loaded" class="card-container__wrapper">
       <div v-for="post in posts" :key="posts.indexOf(post)" class="post-card">
         <div class="post-card__head">
@@ -64,6 +50,7 @@
 </template>
 
 <script>
+import Preloader from './Preloader';
 export default {
   name: 'Home',
   data: () => ({
@@ -72,6 +59,9 @@ export default {
   }),
   mounted: function() {
     this.getPosts(this.reddit);
+  },
+  components: {
+    Preloader,
   },
   props: ['reddit'],
   methods: {
