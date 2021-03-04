@@ -42,6 +42,22 @@
                     }
                   "
                 >
+                  <div class="icon">
+                    <img
+                      v-if="subreddit.data.icon_img"
+                      :src="subreddit.data.icon_img"
+                      width="30px"
+                      height="30px"
+                      :alt="subreddit.data.display_name"
+                    />
+                    <img
+                      v-else
+                      src="./assets/reddit_icon_32.png"
+                      width="30px"
+                      height="30px"
+                      :alt="subreddit.data.display_name"
+                    />
+                  </div>
                   <router-link
                     :to="{
                       name: 'subreddit',
@@ -183,6 +199,21 @@ nav {
           padding-left: 10px;
           margin: 0;
           li {
+            display: flex;
+            align-items: center;
+            .icon {
+              position: absolute;
+              width: 30px;
+              height: 30px;
+              img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+              }
+            }
+            a {
+              margin-left: 40px;
+            }
             & + li {
               margin-top: 20px;
             }

@@ -109,6 +109,7 @@ export default {
 <style lang="scss">
 $bgcolor: #f0f0f0;
 $maincolor: #009688;
+$placeholdercolor: #9cece4;
 $imgborder: 2px solid
   rgba(
     $color: #009688,
@@ -165,13 +166,16 @@ $imgborder: 2px solid
           margin-bottom: 20px;
         }
         &__img {
+          background-color: $placeholdercolor;
           img {
+            display: block;
             border: $imgborder;
-            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
           }
         }
         &__video {
-          background-color: #292929;
+          background-color: $placeholdercolor;
           display: flex;
           justify-content: center;
           video {
