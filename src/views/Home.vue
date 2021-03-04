@@ -153,4 +153,44 @@ $bgcolor: #f0f0f0;
     }
   }
 }
+@media screen and (max-width: 414px) {
+  .page-title {
+    h2 {
+      font-size: 30px;
+    }
+  }
+  .home {
+    flex-direction: column-reverse;
+    &__posts {
+      width: 100%;
+    }
+    &__sidebar {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+}
+@media screen and (min-width: 415px) and (max-width: 1024px) {
+  .page-title {
+    margin-left: 0;
+    h2 {
+      font-size: 40px;
+    }
+  }
+  .home {
+    &__posts {
+      width: calc(100% - 40% - 10px);
+    }
+    &__sidebar {
+      width: calc(100% - 60%);
+      .recommended {
+        &__head {
+          h5 {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
 </style>

@@ -225,6 +225,9 @@ nav {
 }
 
 @media screen and (max-width: 414px) {
+  .container {
+    max-width: 90%;
+  }
   nav {
     padding: 40px 0;
     .nav-wrapper {
@@ -260,6 +263,9 @@ nav {
     }
   }
 }
-@media screen and (min-width: 415) and (max-width: 1024px) {
+@media screen and (min-width: 415px) and (max-width: 1024px) {
+  .container {
+    max-width: 90%;
+  }
 }
 </style>
