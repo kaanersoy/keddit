@@ -1,4 +1,6 @@
-# Reddit clone made with Vue 2
+# Keddit(Reddit Clone) made with Vue 2
+
+A reddit clone allows you to see top posts of day and search subreddits from reddit. Made with Vue 2.
 
 > just a reddit clone 🐶
 
@@ -45,4 +47,4 @@ npm run serve
 
 - Close icon -> [https://www.iconfinder.com/](https://www.iconfinder.com/search/?q=close)
 - Loading svg -> [https://loading.io/](https://loading.io/)
-- Font | Inter -> [Inter(Rasmus Andersson) - Google Fonts](https://fonts.google.com/specimen/Inter)
+- Font -> [Inter(Rasmus Andersson) - Google Fonts](https://fonts.google.com/specimen/Inter)
