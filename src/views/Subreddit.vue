@@ -33,6 +33,7 @@ export default {
 
 <style lang="scss">
 section.subreddit {
+  margin-bottom: 30px;
   width: 100%;
 }
 </style>

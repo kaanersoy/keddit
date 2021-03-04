@@ -74,11 +74,13 @@
       </div>
     </nav>
     <router-view />
+    <custom-footer></custom-footer>
   </div>
 </template>
 
 <script>
 import Preloader from './components/Preloader';
+import CustomFooter from './components/CustomFooter';
 import 'normalize.css';
 export default {
   name: 'App',
@@ -91,6 +93,8 @@ export default {
   }),
   components: {
     Preloader,
+
+    CustomFooter,
   },
   methods: {
     makeSearch: function() {
@@ -244,9 +248,8 @@ nav {
           width: 100%;
         }
         &__results {
-          left: 50%;
-          transform: translateX(-50%);
-          width: 120%;
+          left: 0;
+          width: 100%;
           ul {
             li {
               height: 30px;

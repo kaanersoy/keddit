@@ -117,6 +117,7 @@ $imgborder: 2px solid
   );
 .card-container {
   width: 100%;
+  min-height: 60vh;
   &__head {
     margin-bottom: 10px;
     h2 {

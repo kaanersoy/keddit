@@ -70,6 +70,7 @@ $bgcolor: #f0f0f0;
 .home {
   margin-top: 20px;
   border-radius: 8px;
+  margin-bottom: 30px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
