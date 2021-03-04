@@ -73,7 +73,6 @@
         </div>
       </div>
     </nav>
-
     <router-view />
   </div>
 </template>
@@ -88,15 +87,16 @@ export default {
     searchKeyword: null,
     searchResults: [],
     isSearchLoading: false,
+    timeOut: null,
   }),
   components: {
     Preloader,
   },
   methods: {
     makeSearch: function() {
-      clearTimeout(searchTimeout);
-      const searchTimeout = setTimeout(() => {
-        if (this.searchKeyword.length > 1) {
+      clearTimeout(this.timeOut);
+      this.timeOut = setTimeout(() => {
+        if (this.searchKeyword.length > 0) {
           this.isSearchLoading = true;
           fetch(`https://www.reddit.com/subreddits/search.json?q=${this.searchKeyword}`)
             .then(res => res.json())
