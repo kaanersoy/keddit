@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <section class="subreddit">
-      <h1>{{ `r/` + subredditName }}</h1>
+      <div class="page-title">
+        <h2>{{ `r/` + subredditName }}</h2>
+      </div>
       <posts v-if="subredditName" :reddit="subredditName"></posts>
     </section>
   </div>

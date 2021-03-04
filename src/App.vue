@@ -3,7 +3,7 @@
     <nav>
       <div class="container">
         <div class="nav-wrapper">
-          <router-link to="/" class="brand-logo">reddit</router-link>
+          <router-link to="/" class="brand-logo">keddit</router-link>
           <div class="searchbar">
             <input
               id="search"
@@ -13,7 +13,7 @@
               @keydown.esc="(searchKeyword = ''), (isSearching = false)"
               required
             />
-            <label class="label-icon" for="search">Search subreddits</label>
+            <label class="label-icon" for="search">Search subkeddits</label>
             <span
               class="close"
               v-if="searchKeyword"
@@ -81,16 +81,19 @@ export default {
       clearTimeout(searchTimeout);
       const searchTimeout = setTimeout(() => {
         if (this.searchKeyword.length > 1) {
+          this.isSearchLoading = true;
           fetch(`https://www.reddit.com/subreddits/search.json?q=${this.searchKeyword}`)
             .then(res => res.json())
             .then(res => (this.searchResults = res.data.children))
             .then(() => {
               if (this.searchResults.length > 0) {
-                return (this.isSearching = true);
+                this.isSearching = true;
+                return (this.isSearchLoading = false);
               }
               this.isSearching = false;
             });
         } else {
+          this.isSearchLoading = false;
           this.isSearching = false;
         }
       }, 1000);
@@ -100,6 +103,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
 $bgcolor: #dae0e6;
 $maincolor: #009688;
 
@@ -108,7 +113,7 @@ $maincolor: #009688;
   margin: 0 auto;
 }
 body {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: $bgcolor;
@@ -120,7 +125,7 @@ nav {
   .brand-logo {
     font-size: 30px;
     color: #fff;
-    font-weight: bold;
+    font-weight: 900;
     text-decoration: none;
   }
   .nav-wrapper {

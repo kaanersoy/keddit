@@ -59,6 +59,14 @@ export default {
 
 <style lang="scss">
 $bgcolor: #f0f0f0;
+.page-title {
+  margin-left: 10px;
+  h2 {
+    font-size: 60px;
+    font-weight: 900;
+    margin: 40px 0;
+  }
+}
 .home {
   margin-top: 20px;
   border-radius: 8px;
