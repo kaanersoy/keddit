@@ -79,11 +79,11 @@
 </template>
 
 <script>
-import Preloader from './components/Preloader';
-import CustomFooter from './components/CustomFooter';
-import 'normalize.css';
+import Preloader from "./components/Preloader";
+import CustomFooter from "./components/CustomFooter";
+import "normalize.css";
 export default {
-  name: 'App',
+  name: "App",
   data: () => ({
     isSearching: false,
     searchKeyword: null,
@@ -97,14 +97,16 @@ export default {
     CustomFooter,
   },
   methods: {
-    makeSearch: function() {
+    makeSearch: function () {
       clearTimeout(this.timeOut);
       this.timeOut = setTimeout(() => {
         if (this.searchKeyword.length > 0) {
           this.isSearchLoading = true;
-          fetch(`https://www.reddit.com/subreddits/search.json?q=${this.searchKeyword}`)
-            .then(res => res.json())
-            .then(res => (this.searchResults = res.data.children))
+          fetch(
+            `https://www.reddit.com/subreddits/search.json?q=${this.searchKeyword}`
+          )
+            .then((res) => res.json())
+            .then((res) => (this.searchResults = res.data.children))
             .then(() => {
               if (this.searchResults.length > 0) {
                 this.isSearching = true;
@@ -123,7 +125,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap");
 
 $bgcolor: #dae0e6;
 $maincolor: #009688;
@@ -133,7 +135,7 @@ $maincolor: #009688;
   margin: 0 auto;
 }
 body {
-  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  font-family: "Inter", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: $bgcolor;
