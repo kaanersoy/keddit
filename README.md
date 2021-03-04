@@ -45,6 +45,6 @@ npm run serve
 
 ## Credits
 
-- Close icon -> [https://www.iconfinder.com/](https://www.iconfinder.com/search/?q=close)
-- Loading svg -> [https://loading.io/](https://loading.io/)
+- Close icon -> [www.iconfinder.com](https://www.iconfinder.com/search/?q=close)
+- Loading svg -> [loading.io](https://loading.io/)
 - Font -> [Inter(Rasmus Andersson) - Google Fonts](https://fonts.google.com/specimen/Inter)
