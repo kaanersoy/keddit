@@ -170,6 +170,7 @@ $imgborder: 2px solid
           img {
             display: block;
             border: $imgborder;
+            min-width: 50%;
             max-width: 100%;
             margin: 0 auto;
           }
@@ -179,6 +180,7 @@ $imgborder: 2px solid
           display: flex;
           justify-content: center;
           video {
+            min-width: 50%;
             max-width: 100%;
             border: $imgborder;
           }
@@ -227,5 +229,9 @@ $imgborder: 2px solid
       }
     }
   }
+}
+@media screen and (maxwidth: 414px) {
+}
+@media screen and (min-width: 415) and (max-width: 1024px) {
 }
 </style>

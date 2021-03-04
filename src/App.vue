@@ -148,7 +148,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100px;
+    min-height: 100px;
     .searchbar {
       position: relative;
       label {
@@ -222,5 +222,44 @@ nav {
       }
     }
   }
+}
+
+@media screen and (max-width: 414px) {
+  nav {
+    padding: 40px 0;
+    .nav-wrapper {
+      height: unset;
+      display: block;
+      a {
+        display: block;
+        text-align: center;
+      }
+      .searchbar {
+        margin: 0;
+        margin-top: 20px;
+        input {
+          width: 100%;
+        }
+        &__results {
+          left: 50%;
+          transform: translateX(-50%);
+          width: 120%;
+          ul {
+            li {
+              height: 30px;
+              & + li {
+                margin-top: 20px;
+                a {
+                  text-align: left;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 415) and (max-width: 1024px) {
 }
 </style>
